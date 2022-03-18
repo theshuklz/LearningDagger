@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -21,12 +22,17 @@ import com.example.learningdagger.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import javax.inject.Inject;
+
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
-    private Car car;
+    //can't be private or final if you wanna inject it
+    @Inject
+    Car car;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +54,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doDaggerStuff() {
+//        CarComponent component = DaggerCarComponent.create();
+//        component.getMyFancyCar().drive();
+
+        //Field Injection: inject my fields in MainActivity
         CarComponent component = DaggerCarComponent.create();
-        component.getMyFancyCar().drive();
+        //take my activity and inject variables annotated with @Inject
+        component.inject(this);
+        car.drive();
     }
 
     @Override
