@@ -2,6 +2,8 @@ package com.example.learningdagger;
 
 import android.os.Bundle;
 
+import com.example.learningdagger.dagger.CarComponent;
+import com.example.learningdagger.dagger.DaggerCarComponent;
 import com.example.learningdagger.pojo.Car;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -46,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doDaggerStuff() {
-        car.drive();
+        CarComponent component = DaggerCarComponent.create();
+        component.getMyFancyCar().drive();
     }
 
     @Override
