@@ -16,6 +16,15 @@ public class Car {
         this.wheels = wheels;
     }
 
+    /**
+     * This method can't be private else dagger can't call it.
+     * We use method constructor here as "this" is not ready yet
+     */
+    @Inject
+    public void enableRemote(Remote remote) {
+        remote.setListener(this);
+    }
+
     public void drive(){
         Log.d(TAG, "driving");
     }
