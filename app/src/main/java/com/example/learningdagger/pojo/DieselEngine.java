@@ -8,6 +8,7 @@ public class DieselEngine implements Engine{
 
     int horsePower;
 
+    @Inject
     public DieselEngine(int horsePower) {
         this.horsePower = horsePower;
     }

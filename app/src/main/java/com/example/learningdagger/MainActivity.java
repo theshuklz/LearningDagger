@@ -58,9 +58,14 @@ public class MainActivity extends AppCompatActivity {
 //        //Field Injection: inject my fields in MainActivity
 //        CarComponent component = DaggerCarComponent.create();
 
-        CarComponent component = DaggerCarComponent.builder()
-                .dieselEngineModule(new DieselEngineModule(1000))
+//        CarComponent component = DaggerCarComponent.builder()
+//                .dieselEngineModule(new DieselEngineModule(1000))
+//                .build();
+
+        CarComponent component= DaggerCarComponent.builder()
+                .horsePower(150)
                 .build();
+
         //take my activity and inject variables annotated with @Inject
         component.inject(this);
         car.drive();
