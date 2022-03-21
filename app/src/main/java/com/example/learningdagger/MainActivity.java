@@ -2,10 +2,14 @@ package com.example.learningdagger;
 
 import android.os.Bundle;
 
+import com.example.learningdagger.dagger.CarComponent;
+import com.example.learningdagger.dagger.DaggerCarComponent;
+import com.example.learningdagger.pojo.Car;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -18,10 +22,17 @@ import com.example.learningdagger.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import javax.inject.Inject;
+
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
+    //can't be private or final if you wanna inject it
+    @Inject
+    Car car;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +47,21 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        binding.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
 
         doDaggerStuff();
     }
 
     private void doDaggerStuff() {
+//        CarComponent component = DaggerCarComponent.create();
+//        component.getMyFancyCar().drive();
 
+        //Field Injection: inject my fields in MainActivity
+        CarComponent component = DaggerCarComponent.create();
+        //take my activity and inject variables annotated with @Inject
+        component.inject(this);
+        car.drive();
     }
 
     @Override
