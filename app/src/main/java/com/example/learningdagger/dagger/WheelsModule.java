@@ -7,8 +7,12 @@ import com.example.learningdagger.pojo.Wheels;
 import dagger.Module;
 import dagger.Provides;
 
+/**
+ * making this class abstract ensures that only static methods can be added here.
+ * Also, dagger doesn't instantiate this module so more optimized.
+ */
 @Module
-public class WheelsModule {
+public abstract class WheelsModule {
 
 
     @Provides

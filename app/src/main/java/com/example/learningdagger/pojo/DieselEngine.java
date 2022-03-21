@@ -6,12 +6,14 @@ import javax.inject.Inject;
 
 public class DieselEngine implements Engine{
 
-    @Inject
-    public DieselEngine() {
+    int horsePower;
+
+    public DieselEngine(int horsePower) {
+        this.horsePower = horsePower;
     }
 
     @Override
     public void start() {
-        Log.d(TAG, "Diesel Engine started");
+        Log.d(TAG, "Diesel Engine started. Horsepower = "+horsePower);
     }
 }

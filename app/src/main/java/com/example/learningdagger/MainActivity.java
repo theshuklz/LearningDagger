@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.example.learningdagger.dagger.CarComponent;
 import com.example.learningdagger.dagger.DaggerCarComponent;
+import com.example.learningdagger.dagger.DieselEngineModule;
 import com.example.learningdagger.pojo.Car;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -54,8 +55,12 @@ public class MainActivity extends AppCompatActivity {
 //        CarComponent component = DaggerCarComponent.create();
 //        component.getMyFancyCar().drive();
 
-        //Field Injection: inject my fields in MainActivity
-        CarComponent component = DaggerCarComponent.create();
+//        //Field Injection: inject my fields in MainActivity
+//        CarComponent component = DaggerCarComponent.create();
+
+        CarComponent component = DaggerCarComponent.builder()
+                .dieselEngineModule(new DieselEngineModule(1000))
+                .build();
         //take my activity and inject variables annotated with @Inject
         component.inject(this);
         car.drive();
