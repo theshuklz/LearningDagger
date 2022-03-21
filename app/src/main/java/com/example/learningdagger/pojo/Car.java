@@ -25,7 +25,8 @@ public class Car {
         remote.setListener(this);
     }
 
-    public void drive(){
+    public void drive() {
+        engine.start();
         Log.d(TAG, "driving");
     }
 }

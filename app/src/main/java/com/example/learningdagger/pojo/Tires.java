@@ -9,6 +9,6 @@ public class Tires {
     }
 
     public void inflate(){
-        Log.d(TAG, "inflateing tires");
+        Log.d(TAG, "inflating tires");
     }
 }
