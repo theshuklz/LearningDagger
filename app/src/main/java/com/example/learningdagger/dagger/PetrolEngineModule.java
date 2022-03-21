@@ -3,14 +3,13 @@ package com.example.learningdagger.dagger;
 import com.example.learningdagger.pojo.Engine;
 import com.example.learningdagger.pojo.PetrolEngine;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class PetrolEngineModule {
+public abstract class PetrolEngineModule {
 
-    @Provides
-    Engine getPetrolEngine(PetrolEngine petrolEngine){
-        return petrolEngine;
-    }
+    @Binds
+    abstract Engine bindPetrolEngine(PetrolEngine petrolEngine);
 }
