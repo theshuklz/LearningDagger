@@ -5,7 +5,7 @@ import com.example.learningdagger.pojo.Car;
 
 import dagger.Component;
 
-@Component
+@Component (modules = WheelsModule.class)
 //Creates and stores our objects and provides them to us
 public interface CarComponent {
 
