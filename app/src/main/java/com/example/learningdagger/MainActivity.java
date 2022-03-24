@@ -4,13 +4,11 @@ import android.os.Bundle;
 
 import com.example.learningdagger.dagger.CarComponent;
 import com.example.learningdagger.dagger.DaggerCarComponent;
+import com.example.learningdagger.dagger.DieselEngineModule;
 import com.example.learningdagger.pojo.Car;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.util.Log;
-import android.view.View;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -26,7 +24,7 @@ import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "car";
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -57,8 +55,17 @@ public class MainActivity extends AppCompatActivity {
 //        CarComponent component = DaggerCarComponent.create();
 //        component.getMyFancyCar().drive();
 
-        //Field Injection: inject my fields in MainActivity
-        CarComponent component = DaggerCarComponent.create();
+//        //Field Injection: inject my fields in MainActivity
+//        CarComponent component = DaggerCarComponent.create();
+
+//        CarComponent component = DaggerCarComponent.builder()
+//                .dieselEngineModule(new DieselEngineModule(1000))
+//                .build();
+
+        CarComponent component= DaggerCarComponent.builder()
+                .horsePower(150)
+                .build();
+
         //take my activity and inject variables annotated with @Inject
         component.inject(this);
         car.drive();
