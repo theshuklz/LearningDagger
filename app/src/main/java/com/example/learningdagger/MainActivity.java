@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         CarComponent component= DaggerCarComponent.builder()
                 .horsePower(150)
+                .engineCapacity(15)
                 .build();
 
         //take my activity and inject variables annotated with @Inject

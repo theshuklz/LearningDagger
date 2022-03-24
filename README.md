@@ -11,3 +11,5 @@
 - We have to use modules if we want to inject values at runtime and we can't use direct constructor injection in that case as the class won't know how to get the required field. 
 - DaggerComponent.create() is only generated if the none of the modules in the component take arguments over the constructor. 
 - We can use Component.builder to inject values in the component as well. It saves the sanctity of the class as it can still remain abstract. Prefer that over passing value directly in the module. 
+- @BindsInstance is used to set variables at runtime. Its better than passing a value at runtime to module as it saves code generation for module implementation.
+- @named is better if you wanna provide stuff with same return type. 
