@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     //can't be private or final if you wanna inject it
     @Inject
-    Car car;
+    Car car1, car2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
         //take my activity and inject variables annotated with @Inject
         component.inject(this);
-        car.drive();
+        car1.drive();
+        car2.drive();
     }
 
     @Override

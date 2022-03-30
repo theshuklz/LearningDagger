@@ -4,10 +4,12 @@ import com.example.learningdagger.MainActivity;
 import com.example.learningdagger.pojo.Car;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
 
+@Singleton
 @Component (modules = {WheelsModule.class, PetrolEngineModule.class})
 //Creates and stores our objects and provides them to us
 public interface CarComponent {
